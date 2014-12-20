@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load pagination_tags %}
+{% load thumbor_url from thumbor_tags %}
 
 {% block content %}
 	{% if query %}
@@ -14,7 +15,7 @@
 		<div class="col-md-12">
 			{% for photo in photo_list %}
 				<a href="{% url 'photolib.image_detail' photo.uuid %}">
-					<img data-src="{{ photo.image.url }}" alt="{{ photo.alt }}" title="{{ photo.alt }}" src="{{ photo.image.url }}" class="img-thumbnail">
+					<img data-src="{{ photo.image.url }}" alt="{{ photo.alt }}" title="{{ photo.alt }}" src="{% thumbor_url photo.image.name width=180 %}" class="img-thumbnail">
 				</a>
 			{% endfor %}
 		</div>

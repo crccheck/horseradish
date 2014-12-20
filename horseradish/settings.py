@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'taggit',
     'photolib',
     'debug_toolbar',
+    'django_thumbor',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -188,3 +189,12 @@ LOGGING = {
         },
     }
 }
+
+# Thumbor thumbnail generation
+#
+# http://django-thumbor.readthedocs.org/en/latest/
+THUMBOR_SERVER = 'http://thumbor1.docker:8888'
+THUMBOR_MEDIA_URL = 'http://{}.s3.amazonaws.com'.format(
+    AWS_STORAGE_BUCKET_NAME,
+)
+# THUMBOR_SECURITY_KEY = ''

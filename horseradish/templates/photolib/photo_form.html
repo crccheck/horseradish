@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 
 {% load markup_tags %}
+{% load thumbor_url from thumbor_tags %}
 
 {% block content %}
     <div class="row">
@@ -15,7 +16,7 @@
     </div>
     <div class="row">
         <div class="col-md-4" style="text-align: center;">
-            <img src="{{ photo.image_300.url }}" class="img-thumbnail">
+            <img src="{% thumbor_url photo.image.name width=300 %}" class="img-thumbnail">
         </div>
         <div class="col-md-8">
             <form class="form-horizontal" role="form" action="." method="post">

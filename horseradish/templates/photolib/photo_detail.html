@@ -2,6 +2,7 @@
 
 {% load markup_tags %}
 {% load staticfiles %}
+{% load thumbor_url from thumbor_tags %}
 
 {% block content %}
     <div class="row">
@@ -38,9 +39,9 @@
                             <label for="input-800-url" class="col-sm-2 control-label">800px</label>
                             <div class="col-sm-10">
                                 <div class="input-group">
-                                    <input id="input-800-url" class="form-control focus-select" type="text" value="{{ photo.image_800.url }}">
+                                    <input id="input-800-url" class="form-control focus-select" type="text" value="{% thumbor_url photo.image.name width=800 %}">
                                     <span class="input-group-btn">
-                                        <a class="btn btn-default" href="{{ photo.image_800.url }}" download="{{ photo.filename }}">
+                                        <a class="btn btn-default" href="{% thumbor_url photo.image.name width=800 %}" download="{{ photo.filename }}">
                                             <span class="glyphicon glyphicon-save"></span>
                                         </a>
                                     </span>
@@ -48,7 +49,7 @@
                             </div>
                         </div>
                     </form>
-                    <img src="{{ photo.image_800.url }}" class="the-image">
+                    <img src="{% thumbor_url photo.image.name width=800 %}" class="the-image">
                 </div>
                 <div class="tab-pane" id="floated">
                     <form class="form-horizontal" role="form">
@@ -56,9 +57,9 @@
                             <label for="input-300-url" class="col-sm-2 control-label">300px</label>
                             <div class="col-sm-10">
                                 <div class="input-group">
-                                    <input id="input-300-url" class="form-control focus-select" type="text" value="{{ photo.image_300.url }}">
+                                    <input id="input-300-url" class="form-control focus-select" type="text" value="{% thumbor_url photo.image.name width=300 %}">
                                     <span class="input-group-btn">
-                                        <a class="btn btn-default" href="{{ photo.image_300.url }}" download="{{ photo.filename }}">
+                                        <a class="btn btn-default" href="{% thumbor_url photo.image.name width=300 %}" download="{{ photo.filename }}">
                                             <span class="glyphicon glyphicon-save"></span>
                                         </a>
                                     </span>
@@ -66,7 +67,7 @@
                             </div>
                         </div>
                     </form>
-                    <img src="{{ photo.image_300.url }}" class="the-image">
+                    <img src="{% thumbor_url photo.image.name width=300 %}" class="the-image">
                 </div>
                 <div class="tab-pane" id="splash">
                     <form class="form-horizontal" role="form">
@@ -74,9 +75,9 @@
                             <label for="input-180sq-url" class="col-sm-2 control-label">180px</label>
                             <div class="col-sm-10">
                                 <div class="input-group">
-                                    <input id="input-180sq-url" class="form-control focus-select" type="text" value="{{ photo.image_180sq.url }}">
+                                    <input id="input-180sq-url" class="form-control focus-select" type="text" value="{% thumbor_url photo.image.name width=180 %}">
                                     <span class="input-group-btn">
-                                        <a class="btn btn-default" href="{{ photo.image_180sq.url }}" download="{{ photo.filename }}">
+                                        <a class="btn btn-default" href="{% thumbor_url photo.image.name width=180 %}" download="{{ photo.filename }}">
                                             <span class="glyphicon glyphicon-save"></span>
                                         </a>
                                     </span>
@@ -84,7 +85,7 @@
                             </div>
                         </div>
                     </form>
-                    <img src="{{ photo.image_180sq.url }}" class="the-image">
+                    <img src="{% thumbor_url photo.image.name width=180 %}" class="the-image">
                 </div>
             </div>
         </div>
@@ -178,10 +179,10 @@
                 </div>
                 <div class="modal-body">
 		            <div class="btn-group" id="embed-selector">
-						<a href="#" data-url="{{ photo.image_800.url }}" data-class="blockyblock" class="btn btn-default">Centered</a>
-						<a href="#" data-url="{{ photo.image_300.url }}" data-class="right" class="btn btn-default">Right</a>
-						<a href="#" data-url="{{ photo.image_300.url }}" data-class="left" class="btn btn-default">Left</a>
-						<a href="#" data-url="{{ photo.image_800.url }}" data-class="full-width" class="btn btn-default">Full Width</a>
+						<a href="#" data-url="{% thumbor_url photo.image.name width=800 %}" data-class="blockyblock" class="btn btn-default">Centered</a>
+						<a href="#" data-url="{% thumbor_url photo.image.name width=300 %}" data-class="right" class="btn btn-default">Right</a>
+						<a href="#" data-url="{% thumbor_url photo.image.name width=300 %}" data-class="left" class="btn btn-default">Left</a>
+						<a href="#" data-url="{% thumbor_url photo.image.name width=800 %}" data-class="full-width" class="btn btn-default">Full Width</a>
 					</div>
                     <textarea id="embed-textarea" class="focus-select"></textarea>
                 </div>
