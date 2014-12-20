@@ -4,8 +4,6 @@ import uuid
 from django.conf import settings
 from django.core.urlresolvers import reverse
 from django.db import models
-from imagekit.models import ImageSpecField
-from imagekit.processors import ResizeToFill, ResizeToFit
 from taggit.managers import TaggableManager
 
 PHOTO_SOURCES = settings.PHOTO_SOURCES
@@ -56,27 +54,6 @@ class Photo(models.Model):
 
     # image = models.ImageField(upload_to=upload_path())
     image = models.ImageField(upload_to=upload_path)
-    image_1024 = ImageSpecField(source='image',
-                                processors=[ResizeToFit(1024, 3600, upscale=False)],
-                                options={'quality': PHOTO_QUALITY})
-    image_800 = ImageSpecField(source='image',
-                                processors=[ResizeToFit(800, 3600, upscale=False)],
-                                options={'quality': PHOTO_QUALITY})
-    image_300 = ImageSpecField(source='image',
-                                processors=[ResizeToFit(300, 3600, upscale=False)],
-                                options={'quality': PHOTO_QUALITY})
-    image_800sq = ImageSpecField(source='image',
-                                processors=[ResizeToFill(600, 600)],
-                                options={'quality': PHOTO_QUALITY})
-    image_300sq = ImageSpecField(source='image',
-                                processors=[ResizeToFill(300, 300)],
-                                options={'quality': PHOTO_QUALITY})
-    image_180sq = ImageSpecField(source='image',
-                                processors=[ResizeToFill(180, 180)],
-                                options={'quality': PHOTO_QUALITY})
-    image_thumbnail = ImageSpecField(source='image',
-                                processors=[ResizeToFill(200, 200)],
-                                options={'quality': PHOTO_QUALITY})
 
     uploaded = models.DateTimeField(default=datetime.datetime.utcnow)
     last_updated = models.DateTimeField(blank=True, default=datetime.datetime.utcnow)

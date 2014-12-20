@@ -43,7 +43,6 @@ INSTALLED_APPS = (
     'django_markup',
     'googleauth',
     'haystack',
-    'imagekit',
     'pagination_bootstrap',
     'raven.contrib.django.raven_compat',
     'taggit',
@@ -158,8 +157,6 @@ GOOGLEAUTH_CLIENT_ID = os.environ.get('GOOGLEAUTH_CLIENT_ID')
 GOOGLEAUTH_CLIENT_SECRET = os.environ.get('GOOGLEAUTH_CLIENT_SECRET')
 GOOGLEAUTH_CALLBACK_DOMAIN = os.environ.get('GOOGLEAUTH_CALLBACK_DOMAIN')
 GOOGLEAUTH_APPS_DOMAIN = os.environ.get('GOOGLEAUTH_APPS_DOMAIN')
-
-IMAGEKIT_SPEC_CACHEFILE_NAMER = 'photolib.namers.size_aware'
 
 RAVEN_CONFIG = {
     'dsn': os.environ.get('RAVEN_DSN'),
